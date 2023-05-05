@@ -1,4 +1,4 @@
-Directory with R routines used in:
+Repository with R routines used in:
 **Estimating the Efficiency of Brazilian Electricity Distribution Utilities**, Journal of Applied Statistics, 49(8), 2157-2166, 2022.
 
 - **MCMC_Code.R** : Main file containing the MCMC routine; 
