@@ -7,6 +7,7 @@ atualizarBETA <- function(mu,sigma,y,x,u,tau2){
   beta  <- rmvnorm(1,media,mcov)
   return(beta)
 }
+
 # Full conditional distribution for tau2
 atualizarTAU2<-function(alpha0,beta0,n,l,y,x,beta,u){
   beta  <- beta0 + sum((y-x%*%beta-u)^2)/2
@@ -14,6 +15,7 @@ atualizarTAU2<-function(alpha0,beta0,n,l,y,x,beta,u){
   tau2  <- 1/rgamma(1,alpha,beta)
   return(tau2)
 }
+
 # Full conditional distribution for inefficiencies u
 condicionalU<-function(u,eta,sigma2,y,x,beta,tau2){
   priori <- -log(u)-(log(u)-eta)^2/(2*sigma2)
@@ -21,6 +23,7 @@ condicionalU<-function(u,eta,sigma2,y,x,beta,tau2){
   funcao <- priori+verossi
   return(funcao)
 }
+
 # Metropolis-Hasting for inefficiencies u
 atualizarU<-function(u,eta,sigma2,y,x,beta,tau2){
   valoratual   <- u
@@ -30,6 +33,7 @@ atualizarU<-function(u,eta,sigma2,y,x,beta,tau2){
   Ufinal        <- ifelse(runif(1)<chanceaceitar,valorproposto,valoratual)  
   return(Ufinal)
 }
+
 # Full conditional distribution for sigma2
 atualizarSIGMA2<-function(alpha1,beta1,n,l,u,eta){
   w      <- log(u)
@@ -38,6 +42,7 @@ atualizarSIGMA2<-function(alpha1,beta1,n,l,u,eta){
   sigma2 <- 1/rgamma(1,alpha,beta)
   return(sigma2)
 }
+
 # Full conditional distribution for omega
 atualizarW2<-function(alpha2,beta2,n,l,quad.sum){
   alpha <- alpha2 + n*l
@@ -45,6 +50,7 @@ atualizarW2<-function(alpha2,beta2,n,l,quad.sum){
   w2    <- riwish(alpha, beta)
   return(w2)
 }
+
 # Full conditional for the latent variable in the degrees of freedom
 atualizarV<-function(nu,quad.nmult,l){
   alpha <- c(rep((nu+1)/2,l))
@@ -52,6 +58,7 @@ atualizarV<-function(nu,quad.nmult,l){
   v     <- rgamma(l,alpha,beta)
   return(v)
 }
+
 # Full conditional for the degrees of freedom 
 condicionalNU1<-function(nu,v,n,l){
   d       <- 4/(1+sqrt(2))
@@ -60,6 +67,7 @@ condicionalNU1<-function(nu,v,n,l){
   funcao  <- priori+verossi
   return(funcao)
 }
+
 # Metropolis-Hasting for the degrees of freedom 
 atualizarNU1<-function(nu,v,n,l,clap,clap.aux,M0,t){
   valoratual<-nu
