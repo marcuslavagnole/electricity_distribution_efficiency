@@ -3,11 +3,6 @@ library(mvtnorm)
 library(MCMCpack)
 library(coda)
 library(msm)
-#library(foreign)
-#library(ggplot2)
-#library(reshape2)
-#library(openxlsx)
-#library(plyr)
 
 # Set working directory to file location and load utils
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
