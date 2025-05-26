@@ -9,7 +9,7 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 source("Full_Conditionals.R")
 load("base.RData")
 
-# Set appropriately the dependent and indepent variables 
+# Set appropriately the dependent and independent variables 
 CC = NULL
 for(i in 1:(length(base$Ano)/14)){
   CC = cbind(CC,base$Custo[((i-1)*14+1):(i*14)])
@@ -35,7 +35,7 @@ LF = log(LF)
 l<- dim(CC)[1]
 n<- dim(CC)[2]
 
-# Define number of iterations
+# Define the number of iterations
 NN<-100000
 
 # Create auxiliary objects
@@ -67,7 +67,7 @@ beta[1,]    <- c(-1,0.6,0.2,0.15)
 v <- matrix(1,14,60)
 nu1[1,1] <- 4
 
-# Create auxiliary objects for the adaptative MH
+# Create auxiliary objects for the adaptive MH
 rmw_nu1     <- matrix(NA,NN,3)
 rmw_nu1[1,] <- c(0.8,1,0)
 
