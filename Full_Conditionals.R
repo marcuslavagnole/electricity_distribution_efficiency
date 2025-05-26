@@ -24,7 +24,7 @@ condicionalU<-function(u,eta,sigma2,y,x,beta,tau2){
   return(funcao)
 }
 
-# Metropolis-Hasting for inefficiencies u
+# Metropolis-Hastings for inefficiencies u
 atualizarU<-function(u,eta,sigma2,y,x,beta,tau2){
   valoratual   <- u
   valorproposto<- 0.01+exp(rnorm(1,log(valoratual-0.01),1))
@@ -68,7 +68,7 @@ condicionalNU1<-function(nu,v,n,l){
   return(funcao)
 }
 
-# Metropolis-Hasting for the degrees of freedom 
+# Metropolis-Hastings for the degrees of freedom 
 atualizarNU1<-function(nu,v,n,l,clap,clap.aux,M0,t){
   valoratual<-nu
   valorproposto<-rtnorm(1,valoratual,sqrt(clap*clap.aux),lower=2,upper=40)
